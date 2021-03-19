@@ -1,47 +1,42 @@
 const socialDiv = document.querySelector('.social');
 const shareMobileIcon = document.querySelector('.share-mobile');
+const socialMenu = document.querySelector('.social-menu');
+const userInfo = document.querySelector('.user-info');
+const triangleMenu = document.querySelector('.triangle');
+const mediaQuery = window.matchMedia('(min-width: 1000px)');
 
 let hidden = true;
 
-const socialMenu = () => {
-  if (hidden) {
-    socialDiv.classList.add('turn-dark');
-
-    socialDiv.firstChild.nextSibling.classList.replace(
-      'user-info',
-      'social-menu'
-    );
-
-    socialDiv.firstChild.nextSibling.innerHTML =
-      '<span class="share-title">share</span><div class="social-icons"><img id="fb-icon" src="images/icon-facebook.svg" alt="facebook icon"><img id="tw-icon" src="images/icon-twitter.svg" alt="twitter icon"><img id="pint-icon" src="images/icon-pinterest.svg" alt="pinterest icon"></div>';
-
-    shareMobileIcon.classList.add('active-button');
-
-    hidden = !hidden;
-  } else {
-    socialDiv.classList.remove('turn-dark');
-
-    socialDiv.firstChild.nextSibling.classList.replace(
-      'social-menu',
-      'user-info'
-    );
-
-    socialDiv.firstChild.nextSibling.innerHTML = `<div class="user-info">
-          <img
-            class="avatar"
-            src="images/avatar-michelle.jpg"
-            alt="avatar person"
-          />
-          <div class="name-date">
-            <h3>Michelle Appleton</h3>
-            <span>28 Jun 2020</span>
-          </div>
-        </div>`;
-
-    shareMobileIcon.classList.remove('active-button');
-
+mediaQuery.onchange = function () {
+  shareMobileIcon.classList.remove('active-button');
+  socialDiv.classList.remove('turn-dark');
+  userInfo.style.display = 'flex';
+  socialMenu.style.display = 'none';
+  triangleMenu.style.display = 'none';
+  if (!hidden) {
     hidden = !hidden;
   }
 };
 
-shareMobileIcon.addEventListener('click', socialMenu);
+const socialMenuModal = () => {
+  if (hidden) {
+    shareMobileIcon.classList.add('active-button');
+    if (window.innerWidth < 1000) {
+      socialDiv.classList.add('turn-dark');
+      userInfo.style.display = 'none';
+    }
+    triangleMenu.style.display = 'unset';
+    socialMenu.style.display = 'flex';
+
+    hidden = !hidden;
+  } else {
+    shareMobileIcon.classList.remove('active-button');
+    socialDiv.classList.remove('turn-dark');
+    userInfo.style.display = 'flex';
+    socialMenu.style.display = 'none';
+    triangleMenu.style.display = 'none';
+    hidden = !hidden;
+  }
+};
+
+shareMobileIcon.addEventListener('click', socialMenuModal);
