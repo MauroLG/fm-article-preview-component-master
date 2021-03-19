@@ -1,5 +1,5 @@
 const socialDiv = document.querySelector('.social');
-const shareMobileIcon = document.querySelector('.share-mobile');
+const shareIcon = document.querySelector('.share-icon');
 const socialMenu = document.querySelector('.social-menu');
 const userInfo = document.querySelector('.user-info');
 const triangleMenu = document.querySelector('.triangle');
@@ -8,7 +8,7 @@ const mediaQuery = window.matchMedia('(min-width: 1000px)');
 let hidden = true;
 
 mediaQuery.onchange = function () {
-  shareMobileIcon.classList.remove('active-button');
+  shareIcon.classList.remove('active-button');
   socialDiv.classList.remove('turn-dark');
   userInfo.style.display = 'flex';
   socialMenu.style.display = 'none';
@@ -20,7 +20,7 @@ mediaQuery.onchange = function () {
 
 const socialMenuModal = () => {
   if (hidden) {
-    shareMobileIcon.classList.add('active-button');
+    shareIcon.classList.add('active-button');
     if (window.innerWidth < 1000) {
       socialDiv.classList.add('turn-dark');
       userInfo.style.display = 'none';
@@ -30,7 +30,7 @@ const socialMenuModal = () => {
 
     hidden = !hidden;
   } else {
-    shareMobileIcon.classList.remove('active-button');
+    shareIcon.classList.remove('active-button');
     socialDiv.classList.remove('turn-dark');
     userInfo.style.display = 'flex';
     socialMenu.style.display = 'none';
@@ -39,4 +39,4 @@ const socialMenuModal = () => {
   }
 };
 
-shareMobileIcon.addEventListener('click', socialMenuModal);
+shareIcon.addEventListener('click', socialMenuModal);
