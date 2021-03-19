@@ -95,10 +95,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.share-icon-wrapper img {
-  width: 50%;
+  cursor: pointer;
 }
 
 .name-date {
@@ -143,25 +140,28 @@ body {
   justify-content: space-between;
 }
 
-.social-icons img {
-  width: 19px;
-  height: 19px;
-
-  /* max-height: 20px;
-  min-height: 20px;
-  max-width: 20px;
-  min-width: 20px; */
-}
-
 #tw-icon {
   width: 22px;
+  cursor: pointer;
 }
 
-.active {
+#fb-icon {
+  cursor: pointer;
+}
+
+#pint-icon {
+  cursor: pointer;
+}
+
+.active-button {
   background-color: var(--desaturated-dark-blue);
 }
-.active img {
-  filter: grayscale(1) invert(1);
+.active-button svg path {
+  fill: var(--light-grayish-blue);
+}
+
+.turn-dark {
+  background-color: var(--very-dark-grayish-blue);
 }
 
 .sc .attribution {
